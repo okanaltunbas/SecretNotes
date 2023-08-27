@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from PIL import Image, ImageTk
 from cryptography.fernet import Fernet
 
@@ -46,12 +47,11 @@ def decrypt_data():
         if entered_key == stored_key:
             message_text.insert("1.0", decrypted_text)
         else:
-            message_text.insert("1.0", "Incorrect Key")
+            messagebox.showinfo(title="Error!", message="Incorrect Key")
 
     except:
         clear_form()
-        message_text.insert("1.0", "Decryption Error")
-
+        messagebox.showinfo(title="Error!", message="Decryption Error")
 
 def save_encrypted_text():
     with open("mysecret.txt", "a") as file:
